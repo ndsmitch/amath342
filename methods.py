@@ -40,12 +40,15 @@ class NumericalMethod(object):
                 self.t = self.t[:f_len]
                 break
 
-    def plot_first_coord(self, title, filename, y=None):
+    def plot_coord(self, title, filename,
+                   y=None, x_coord=None, y_coord=0, xlabel='t', ylabel='y(t)'):
         ''' plot approximated first coordinate of the solution
         against provided function y(t) if provided
         '''
+        x_pts = self.t if x_coord is None else [pt[x_coord] for pt in self.y]
+
         fig, ax = plt.subplots()
-        ax.plot(self.t, [pt[0] for pt in self.y], 'r')
+        ax.plot(x_pts, [pt[y_coord] for pt in self.y], 'r')
 
         if y is not None:
             t = np.linspace(float(self.t[0]), float(self.t[-1]), 500)
@@ -53,7 +56,7 @@ class NumericalMethod(object):
             ax.plot(t, y, 'b')
             ax.legend(['Approximate', 'Actual'])
 
-        ax.set(xlabel='t', ylabel='y(t)', title=title)
+        ax.set(xlabel=xlabel, ylabel=ylabel, title=title)
         fig.savefig(filename)
         return fig
 

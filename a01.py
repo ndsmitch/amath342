@@ -21,7 +21,7 @@ def Q3():
             t0=0,
             tf=1
         )
-        sol.plot_first_coord(
+        sol.plot_coord(
             title='Actual vs Approximated y(t); ' \
                   'Euler\'s Method with h={0}'.format(h),
             filename='a01/q3c_h{0}.png'.format(str(h).replace('.', '')),
@@ -37,7 +37,7 @@ def Q3():
             t0=0,
             tf=1
         )
-        sol.plot_first_coord(
+        sol.plot_coord(
             title='Actual vs Approximated y(t); '
                   'Theta Method with h={0}'.format(h),
             filename='a01/q3e_h{0}.png'.format(str(h).replace('.', '')),
@@ -62,10 +62,14 @@ def Q4():
             h=0.002,
             t0=0,
             tf=50
-        ).plot_first_coord(
-            title='Approximated x(t); ' \
+        ).plot_coord(
+            title='Approximated z(x); ' \
                   'Euler\'s Method with rho={0}'.format(rho),
-            filename='a01/q4{0}.png'.format(rho)
+            filename='a01/q4_rho{0}.png'.format(rho),
+            x_coord=0,  # plot x on horz
+            y_coord=2,  # plot z on vert
+            xlabel='x(t)',
+            ylabel='z(t)'
         )
 
 if __name__ == "__main__":
